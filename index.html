@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinning Prize Wheel</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .wheel-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: url('https://raw.githubusercontent.com/NicolaMajor/Wheel123/main/Spinning%20wheel.png?token=GHSAT0AAAAAACWXSU5MAXCEPDSW5EDZLOEKZWQB4GQ') no-repeat center;
+            background-size: cover;
+            transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+        }
+
+        .spin-button {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .spin-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wheel-container">
+    <div class="wheel" id="wheel"></div>
+    <button class="spin-button" onclick="spinWheel()">Spin</button>
+</div>
+
+<script>
+    function spinWheel() {
+        const wheel = document.getElementById('wheel');
+        const degrees = Math.floor(5000 + Math.random() * 5000);
+        wheel.style.transform = `rotate(${degrees}deg)`;
+
+        // Optionally, determine the prize based on degrees
+        // Example: alert('You won ' + getPrize(degrees));
+    }
+
+    // Optional: Determine prize based on degrees
+    function getPrize(degrees) {
+        const normalizedDegrees = degrees % 360;
+        // Add logic to return prize based on normalizedDegrees
+    }
+</script>
+
+</body>
+</html>
